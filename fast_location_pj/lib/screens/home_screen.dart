@@ -8,6 +8,7 @@ class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
   @override
+  // ignore: library_private_types_in_public_api
   _HomeScreenState createState() => _HomeScreenState();
 }
 
@@ -45,7 +46,7 @@ class _HomeScreenState extends State<HomeScreen> {
             TextField(
               controller: cepController,
               keyboardType: TextInputType.number,
-              decoration: const InputDecoration(labelText: 'Digite o CEP'),
+              decoration: const InputDecoration(labelText: 'Digite o CEP com 8 digitos'),
             ),
             const SizedBox(height: 10),
             ElevatedButton(onPressed: buscarCep, child: const Text('Buscar')),
@@ -53,7 +54,7 @@ class _HomeScreenState extends State<HomeScreen> {
             Text(endereco, style: const TextStyle(fontSize: 16)),
             const SizedBox(height: 20),
             const Text('Últimos endereços pesquisados:', style: TextStyle(fontWeight: FontWeight.bold)),
-            ...historico.map((e) => AddressCard(endereco: e)).toList(),
+            ...historico.map((e) => AddressCard(endereco: e)),
             const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const HistoryScreen())),
